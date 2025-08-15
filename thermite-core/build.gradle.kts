@@ -1,5 +1,5 @@
 plugins {
-    id("java")
+    kotlin("jvm")
 }
 
 group = "de.thermondo"
@@ -10,9 +10,12 @@ repositories {
 }
 
 dependencies {
-    testImplementation(platform("org.junit:junit-bom:5.10.0"))
-    testImplementation("org.junit.jupiter:junit-jupiter")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    implementation(libs.appium)
+    implementation(libs.junit)
+    implementation(libs.selenide.appium)
+
+    testImplementation(kotlin("test"))
+    testImplementation(libs.mockk)
 }
 
 tasks.test {
