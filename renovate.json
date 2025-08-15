@@ -1,0 +1,25 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended"
+  ],
+  "labels": [
+    "dependencies :bricks:"
+  ],
+  "rebaseWhen": "never",
+  "timezone": "Europe/Berlin",
+  "description": "Schedule dependency updates every Monday by 7:00",
+  "schedule": [
+    "* 0-7 * * 1"
+  ],
+  "packageRules": [
+    {
+      "matchUpdateTypes": [
+        "digest",
+        "minor",
+        "patch"
+      ],
+      "automerge": true
+    }
+  ]
+}
