@@ -56,16 +56,43 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v5
-        with:
-          fetch-depth: 0
+
       - name: Set up JDK
         uses: actions/setup-java@v4.7.1
         with:
           distribution: 'temurin'
           java-version: 19
           cache: 'gradle'
+
+      - name: Set up Homebrew
+        uses: Homebrew/actions/setup-homebrew@master
+
+      - name: Install Appium & Drivers
+        run: |
+          brew install appium
+          appium driver install uiautomator2
+
+      - name: Run Appium
+        run: make appium-start
+
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+
       - name: Test
-        run: make report
+        uses: reactivecircus/android-emulator-runner@v2.34.0
+        with:
+          api-level: 33
+          target: google_apis
+          arch: x86_64
+          script: make report
+
+      - name: Stop Appium
+        if: always()
+        run: make appium-stop
+
       - name: Report
         uses: codecov/codecov-action@v5.5.0
         with:
