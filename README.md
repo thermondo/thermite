@@ -6,3 +6,24 @@
 
 Thermite is an automation testing library for mobile. It
 leverages [Appium](https://appium.io/) and [Selenide](https://selenide.org/).
+
+### Getting Started
+
+You can create a test by extending TestProvider and providing your device
+specifications:
+
+```kotlin
+
+class ExampleTest : AndroidTestProvider() {
+    override val capabilities: MutableCapabilities
+        get() = MutableCapabilities().apply {
+            setCapability("automationName", AutomationName.ANDROID_UIAUTOMATOR2)
+            setCapability("platformName", MobileBrowserType.ANDROID)
+        }
+
+    @Test
+    fun testLogin() {
+        // your test code here
+    }
+}
+```

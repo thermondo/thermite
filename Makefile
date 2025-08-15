@@ -1,6 +1,10 @@
 all: clean format lint test report assemble
 .PHONY: all
 
+appium:
+	appium
+.PHONY: appium
+
 assemble:
 	./gradlew assemble
 .PHONY: assemble
