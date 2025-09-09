@@ -18,7 +18,7 @@ class SampleTest : AndroidTestProvider() {
     @Test
     fun testSample() {
         torch
-            .findsTextEqualTo("Button")
+            .findTextEqualTo("Button")
             .shouldBe(visible)
     }
 }
