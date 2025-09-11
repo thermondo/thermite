@@ -21,7 +21,7 @@ class CapabilitiesExtTest {
     }
 
     @Test
-    fun testToCapabilitiesDefaults() {
+    fun testUiAutomator2OptionsToCapabilitiesAppliesDefaultValues() {
         val options = MutableCapabilities().toOptions { UiAutomator2Options() }
 
         assertTrue(options.app.isEmpty)
@@ -32,7 +32,7 @@ class CapabilitiesExtTest {
     }
 
     @Test
-    fun testToCapabilities() {
+    fun testUiAutomator2OptionsToCapabilitiesAppliesCustomValues() {
         every { capabilities.getCapability("apk") } returns "debug.apk"
         every { capabilities.getCapability("automationName") } returns "UiAutomator2"
         every { capabilities.getCapability("deviceName") } returns "Pixel 6"
