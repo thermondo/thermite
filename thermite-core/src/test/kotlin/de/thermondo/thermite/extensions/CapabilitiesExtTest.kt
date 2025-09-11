@@ -1,5 +1,6 @@
 package de.thermondo.thermite.extensions
 
+import io.appium.java_client.android.options.UiAutomator2Options
 import io.mockk.confirmVerified
 import io.mockk.every
 import io.mockk.mockk
@@ -21,7 +22,7 @@ class CapabilitiesExtTest {
 
     @Test
     fun testToCapabilitiesDefaults() {
-        val options = MutableCapabilities().toOptions()
+        val options = MutableCapabilities().toOptions { UiAutomator2Options() }
 
         assertTrue(options.app.isEmpty)
         assertEquals("UIAutomator2", options.automationName.get())
@@ -40,7 +41,7 @@ class CapabilitiesExtTest {
         every { capabilities.asMap() } returns emptyMap()
         every { capabilities.merge(any()) } answers { firstArg() }
 
-        val options = capabilities.toOptions()
+        val options = capabilities.toOptions { UiAutomator2Options() }
 
         assertEquals("debug.apk", options.app.get())
         assertEquals("UIAutomator2", options.automationName.get())
