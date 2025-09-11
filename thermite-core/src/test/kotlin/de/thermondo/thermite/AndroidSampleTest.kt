@@ -7,7 +7,7 @@ import io.appium.java_client.remote.MobileBrowserType
 import org.junit.jupiter.api.Test
 import org.openqa.selenium.MutableCapabilities
 
-class SampleTest : AndroidTestProvider() {
+class AndroidSampleTest : AndroidTestProvider() {
     override val capabilities: MutableCapabilities =
         MutableCapabilities().apply {
             setCapability("apk", "thermite-core/src/test/resources/curiosity-debug.apk")
