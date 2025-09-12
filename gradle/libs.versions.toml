@@ -1,12 +1,18 @@
 [versions]
+appium = "10.0.0"
 detekt = "1.23.8"
 junit = "5.13.4"
 kotlin = "2.0.0"
 kotlinter = "5.2.0"
 kover = "0.9.1"
+mockk = "1.14.5"
+selenide = "7.9.4"
 
 [libraries]
+appium = { module = "io.appium:java-client", version.ref = "appium" }
 junit = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit" }
+mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
+selenide-appium = { module = "com.codeborne:selenide-appium", version.ref = "selenide" }
 
 [plugins]
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
