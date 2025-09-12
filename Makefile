@@ -7,7 +7,7 @@ appium-start:
 	@nohup appium --log-level info > appium/appium.log 2>&1 &
 	@echo $$! > appium/appium.pid
 	@echo "Appium started with PID `cat appium/appium.pid`"
-.PHOYN: appium-start
+.PHONY: appium-start
 
 appium-stop:
 	@echo "Stopping Appium"
