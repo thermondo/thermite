@@ -53,7 +53,7 @@ mavenPublishing {
         url.set("https://github.com/thermondo/thermite")
         licenses {
             license {
-                name.set("MIT Licence")
+                name.set("MIT License")
                 url.set("https://github.com/thermondo/thermite/blob/main/LICENSE")
             }
         }
