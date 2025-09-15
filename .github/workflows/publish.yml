@@ -1,0 +1,39 @@
+name: Publishing 📚
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - '*'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    name: Publish
+    runs-on: ubuntu-latest
+    env:
+      ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.MAVEN_CENTRAL_USER }}
+      ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.MAVEN_CENTRAL_PWD }}
+      ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.KEY }}
+      ORG_GRADLE_PROJECT_signingInMemoryKeyId: ${{ secrets.KEY_ID }}
+      ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.KEY_PWD }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+      - name: Set up JDK
+        uses: actions/setup-java@v5.0.0
+        with:
+          distribution: 'temurin'
+          java-version: '19'
+          cache: 'gradle'
+      - name: Publish
+        run: |
+          export IS_RELEASE=${{ github.event_name == 'push' && contains(github.ref, 'refs/tags/') }}
+          make publish
