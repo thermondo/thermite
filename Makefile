@@ -36,6 +36,14 @@ lint:
 	./gradlew lintKotlin detekt
 .PHONY: lint
 
+local:
+	./gradlew assemble publishToMavenLocal
+.PHONY: local
+
+publish:
+	./scripts/publish.sh ${GITHUB_RUN_NUMBER}
+.PHONY: publish
+
 report:
 	./gradlew koverHtmlReport koverXmlReport
 .PHONY: report
