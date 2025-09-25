@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-BUILD_NR=${1}
+BUILD_NR="${1?:Must specify build number as first parameter}"
 
 REPO_DIR="$(cd "$(dirname "$0")/../" && pwd)"
 
