@@ -10,7 +10,7 @@ REPO_DIR="$(cd "$(dirname "$0")/../" && pwd)"
 git fetch --force --tags
 TAG=$(git tag --sort=-version:refname | head -1)
 
-if [[ "${IS_RELEASE}" == "true" ]]; then
+if [[ "${IS_RELEASE:-false}" == "true" ]]; then
   export VERSION="$TAG"
   echo "Publishing Release: $VERSION"
 else
