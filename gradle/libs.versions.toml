@@ -1,12 +1,14 @@
 [versions]
 appium = "10.0.0"
 detekt = "1.23.8"
+dokka = "2.0.0"
 junit = "5.13.4"
 kotlin = "2.0.0"
 kotlinter = "5.2.0"
 kover = "0.9.2"
 mockk = "1.14.5"
 selenide = "7.10.1"
+vanniktech = "0.34.0"
 
 [libraries]
 appium = { module = "io.appium:java-client", version.ref = "appium" }
@@ -16,5 +18,7 @@ selenide-appium = { module = "com.codeborne:selenide-appium", version.ref = "sel
 
 [plugins]
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
+dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 kotlinter = { id = "org.jmailen.kotlinter", version.ref = "kotlinter" }
 kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kover" }
+vanniktech = { id = "com.vanniktech.maven.publish", version.ref = "vanniktech" }
