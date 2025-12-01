@@ -6,7 +6,6 @@
   "labels": [
     "dependencies :bricks:"
   ],
-  "rebaseWhen": "never",
   "timezone": "Europe/Berlin",
   "description": "Schedule dependency updates every Monday by 7:00",
   "schedule": [
