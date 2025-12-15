@@ -28,6 +28,10 @@ clean:
 	./gradlew clean
 .PHONY: clean
 
+docs:
+	./gradlew dokkaGenerateHtml
+.PHONY: docs
+
 format:
 	./gradlew formatKotlin
 .PHONY: format
