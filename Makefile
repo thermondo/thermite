@@ -1,4 +1,4 @@
-all: clean format lint test report assemble
+all: clean format lint test report assemble docs
 .PHONY: all
 
 appium-start:
@@ -27,6 +27,10 @@ assemble:
 clean:
 	./gradlew clean
 .PHONY: clean
+
+docs:
+	./gradlew dokkaGenerateHtml
+.PHONY: docs
 
 format:
 	./gradlew formatKotlin
