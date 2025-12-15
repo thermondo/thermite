@@ -1,4 +1,4 @@
-all: clean format lint test report assemble
+all: clean format lint test report assemble docs
 .PHONY: all
 
 appium-start:
