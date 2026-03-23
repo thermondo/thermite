@@ -1,5 +1,5 @@
 [versions]
-appium = "10.0.0"
+appium = "10.1.0"
 detekt = "1.23.8"
 dokka = "2.1.0"
 junit = "6.0.3"
